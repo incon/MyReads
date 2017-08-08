@@ -17,16 +17,26 @@ class BooksApp extends React.Component {
   }
 
   updateBook = (book, shelf) => {
-    this.setState((state) => ({
-      books: state.books.map((b) => {
-        if (b.id === book.id) {
-          b.shelf = shelf
-        }
-        return b
-      })
-    }))
+
+    book.shelf = shelf
+
+    if (this.state.books.filter((b) => b.id === book.id).length > 0) {
+      this.setState((state) => ({
+        books: state.books.map((b) => {
+          if (b.id === book.id) {
+            b = book
+          }
+          return b
+        })
+      }))
+    } else {
+      this.setState((state) => ({
+        books: state.books.concat([book])
+      }))
+    }
 
     BooksAPI.update(book, shelf)
+
   }
 
   render() {
@@ -39,7 +49,10 @@ class BooksApp extends React.Component {
           />
         )}/>
         <Route path='/search' render={() => (
-          <SearchBooks books={this.state.books}/>
+          <SearchBooks
+            books={this.state.books}
+            updateBook={this.updateBook}
+          />
         )}/>
 
       </div>
