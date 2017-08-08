@@ -6,7 +6,10 @@ class ListBooks extends Component {
   getBooksOnShelf(books, shelf) {
     return books.filter((book) => book.shelf === shelf).map((book) => (
       <li key={book.id}>
-        <Book book={book}/>
+        <Book
+          updateBook={this.props.updateBook}
+          book={book}
+        />
       </li>
     ))
   }
