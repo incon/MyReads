@@ -13,23 +13,24 @@ class Book extends Component {
             backgroundImage: `url(${book.imageLinks.thumbnail})`
           }}></div>
           <div className="book-shelf-changer">
-            <select>
+            <select
+              onChange={(event) =>  {
+                this.props.updateBook({id: book.id }, event.target.value)}
+              }
+              defaultValue={book.shelf}
+            >
               <option value="none" disabled>Move to...</option>
               <option
                 value="currentlyReading"
-                selected={ book.shelf === 'currentlyReading' }
               >Currently Reading</option>
               <option
                 value="wantToRead"
-                selected={ book.shelf === 'wantToRead' }
               >Want to Read</option>
               <option
                 value="read"
-                selected={ book.shelf === 'read' }
               >Read</option>
               <option
                 value="none"
-                selected={ book.shelf === 'none' }
               >None</option>
             </select>
           </div>
