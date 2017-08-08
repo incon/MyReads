@@ -4,7 +4,15 @@ import Book from './Book'
 
 class ListBooks extends Component {
   getBooksOnShelf(books, shelf) {
-    return books.filter((book) => book.shelf === shelf).map((book) => (
+    const filteredBooks = books.filter((book) => book.shelf === shelf)
+
+    if (filteredBooks.length === 0) {
+      return (
+        <p>No books on this shelf.</p>
+      )
+    }
+
+    return filteredBooks.map((book) => (
       <li key={book.id}>
         <Book
           updateBook={this.props.updateBook}
