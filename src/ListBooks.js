@@ -1,8 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import Book from './Book'
 
 class ListBooks extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    updateBook: PropTypes.func.isRequired
+  }
+
   getBooksOnShelf(books, shelf) {
     const filteredBooks = books.filter((book) => book.shelf === shelf)
 
