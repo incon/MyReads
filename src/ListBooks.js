@@ -28,6 +28,19 @@ class ListBooks extends Component {
     ))
   }
 
+  bookShelf(books, shelf, title = "[Title Is Missing]") {
+    return (
+      <div className="bookshelf">
+        <h2 className="bookshelf-title">{title}</h2>
+        <div className="bookshelf-books">
+          <ol className="books-grid">
+            {this.getBooksOnShelf(books, shelf)}
+          </ol>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const { books } = this.props
 
@@ -40,34 +53,9 @@ class ListBooks extends Component {
 
         <div className="list-books-content">
           <div>
-
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                    {this.getBooksOnShelf(books, 'currentlyReading')}
-                </ol>
-              </div>
-            </div>
-
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {this.getBooksOnShelf(books, 'wantToRead')}
-                </ol>
-              </div>
-            </div>
-
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {this.getBooksOnShelf(books, 'read')}
-                </ol>
-              </div>
-            </div>
-
+            {this.bookShelf(books, 'currentlyReading', 'Currently Reading')}
+            {this.bookShelf(books, 'wantToRead', 'Want to Read')}
+            {this.bookShelf(books, 'read', 'Read')}
           </div>
         </div>
 
