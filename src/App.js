@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import SearchBooks from './SearchBooks'
 import ListBooks from './ListBooks'
@@ -35,7 +35,7 @@ class BooksApp extends React.Component {
       }))
     }
 
-    BooksAPI.update({ id: book.id }, shelf)
+    BooksAPI.update({id: book.id}, shelf)
 
   }
 
@@ -54,7 +54,6 @@ class BooksApp extends React.Component {
             updateBook={this.updateBook}
           />
         )}/>
-
       </div>
     )
   }
