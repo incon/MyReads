@@ -22,7 +22,7 @@ class SearchBooks extends Component {
     // Manage queue
     if (this.state.searchQueue.length > 1) {
       if (useQueue) {
-        term = this.state.searchQueue.pop()
+        term = this.state.searchQueue.slice(-1)
         this.setState({searchQueue: []})
       } else {
         this.setState((state) => ({
